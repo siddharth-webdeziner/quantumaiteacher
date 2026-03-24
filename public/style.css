@@ -1,0 +1,76 @@
+/* Response container */
+#response {
+  width: 95%;
+  margin: 30px auto;
+  text-align: left;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Headings */
+#response h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+#response h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#response h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+/* Bold */
+#response strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Italic */
+#response em {
+  font-style: italic;
+}
+
+/* Lists */
+#response ul {
+  padding-left: 20px;
+}
+
+#response li {
+  margin-bottom: 5px;
+}
+
+/* Code blocks */
+#response pre {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+#response code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Horizontal line */
+#response hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Paragraph spacing */
+#response p {
+  margin-bottom: 10px;
+}
