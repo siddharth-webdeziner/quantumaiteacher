@@ -12,11 +12,22 @@ const conversationHistory = {};
 
 app.post("/ask", async (req, res) => {
   try {
-    const SYSTEM_INSTRUCTION = {
-        parts: [{ text: "You are a helpful assistant. Always respond in English only, regardless of the language used in the question. Remember previous questions asked in this conversation and use that context to answer related questions. If a new question is related to a previous one, refer to the previous answer and build upon it." }]
-    };
     const question = req.body.question;
     const sessionId = req.body.sessionId || "default";
+    const responseLanguage = req.body.responseLanguage || "english";
+
+    // Define system instructions based on language preference
+    let systemInstructionText = "You are a helpful assistant. Remember previous questions asked in this conversation and use that context to answer related questions. If a new question is related to a previous one, refer to the previous answer and build upon it.";
+    
+    if (responseLanguage === "hinglish") {
+      systemInstructionText += " Always respond in Hinglish (a mix of Hindi and English). Use Hindi words and grammar mixed with English, write in Roman script (not Devanagari).";
+    } else {
+      systemInstructionText += " Always respond in English only, regardless of the language used in the question.";
+    }
+
+    const SYSTEM_INSTRUCTION = {
+        parts: [{ text: systemInstructionText }]
+    };
 
     // Initialize session history if not exists
     if (!conversationHistory[sessionId]) {

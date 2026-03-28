@@ -5,6 +5,26 @@ if (!sessionId) {
   localStorage.setItem("sessionId", sessionId);
 }
 
+// Language preference
+let responseLanguage = localStorage.getItem("responseLanguage") || "english";
+
+function setLanguage(language) {
+  responseLanguage = language;
+  localStorage.setItem("responseLanguage", language);
+  
+  // Update UI
+  const englishBtn = document.getElementById("englishBtn");
+  const hinglishBtn = document.getElementById("hinglishBtn");
+  
+  if (language === "english") {
+    englishBtn.classList.add("active");
+    hinglishBtn.classList.remove("active");
+  } else {
+    hinglishBtn.classList.add("active");
+    englishBtn.classList.remove("active");
+  }
+}
+
 async function askAI() {
   const question = document.getElementById("question").value;
   
@@ -36,7 +56,7 @@ async function askAI() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ question, sessionId })
+      body: JSON.stringify({ question, sessionId, responseLanguage })
     });
 
     const data = await res.json();
@@ -102,4 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+  
+  // Initialize language toggle UI on page load
+  setLanguage(responseLanguage);
 });
